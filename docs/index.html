@@ -122,7 +122,7 @@ figure {
   border-radius: 2px;
 
   background-color: var(--accent-color);
-  color: #f1f3f4 !important;
+  color: #f5f8f9 !important;
   font-size: 20px;
   width: 190px;
   font-weight: 600;
@@ -139,7 +139,7 @@ figure {
 	padding-right: 16px;
 }
 .venue {
-	color: #1367a7;
+	color: var(--accent-color);
 }
 
 ol {
@@ -169,7 +169,7 @@ ol {
 	<meta name="twitter:creator" content="@juretriglav">
 	<meta name="twitter:title" content="Nobigi - Neural optimized baked interactive global illumination">
 	<meta name="twitter:description" content="Performant and interactive approximation of global illumination using small neural networks on the web.">
-	<meta name="twitter:image" content="https://nvlabs.github.io/instant-ngp/assets/twitter.jpg">
+	<meta name="twitter:image" content="https://jure.github.io/nobigi/assets/coffeecup.png">
 </head>
 
 <body>
@@ -189,9 +189,9 @@ ol {
 
 		<div style="clear: both">
 			<div class="paper-btn-parent">
-				<a class="paper-btn" href="https://github.com/jure/nobigi">
+				<a class="paper-btn" href="https://colab.research.google.com/github/jure/nobigi/blob/main/notebooks/nobigi_two_axis_example.ipynb">
 					<span class="material-icons"> code </span>
-					Code
+					Colab notebook
 				</a>
 				<a class="paper-btn" href="https://juretriglav.si/compressing-global-illumination-with-neural-networks/">
 					<span class="material-icons"> newspaper </span>
@@ -199,7 +199,7 @@ ol {
 				</a>
 				<a class="paper-btn" href="https://codesandbox.io/s/nobigi-coffee-cup-example-xtj3tk">
 					<span class="material-icons"> lightbulb </span>
-					Example
+					Demo
 				</a>
 			</div>
 		</div>
@@ -233,14 +233,17 @@ ol {
 
 		<figure style="width: 100%; float: left">
 			<p class="caption_justify">
-				Described here is a performant (even on mobile devices that are a few years old) and <b>interactive global illumination using small neural networks</b> (4-7 layers deep). Baked lightmaps are the method of choice for pleasantly and accurately lit 3D scenes on the web, but their main drawback is that they are static. A rarely used alternative are video lightmaps, which essentially allow for 1 axis of interactivity (time can be used to represent a dynamic component) - but they are rarely used for a reason, as they can be extremely heavy assets.
-				Demonstrated here is an approach where the global illumination effect of 2 dynamic components (the example uses the rotation of a light on two axes) can be compressed into neural networks with a couple of thousand parameters, and further represented in optimized GLSL (shader) code that is a few 10 kB in size.
+				Described here is a way to achieve <b>performant</b> (even on mobile devices that are a few years old) and <b>interactive global illumination using small neural networks</b> (4-7 layers deep). Baked lightmaps are the method of choice for pleasantly and accurately lit 3D scenes on the web, but their main drawback is that they are static. A rarely used alternative are video lightmaps, which essentially allow for 1 axis of interactivity (time can be used to represent a dynamic component) - but they are rarely used with good reason, as they can be extremely heavy assets.
+				Demonstrated here is an approach where the global illumination effect of 2 dynamic components (the example uses the rotation of a light source on two axes) can be "compressed" into neural networks with a couple of thousand parameters, and further represented in optimized <b>GLSL</b> (shader) code that is a <b>few 10 kB in size</b>.
+			</p>
+			<p class="caption_justify">
+				In addition to the dynamic and asset weight advantages compared to alternative methods, this approach also benefits from practical resolution independence (the effect scales very well in terms of quality, though one must be mindful of performance) and practically infinite steps between two values (e.g. there are an infinite amount of steps between a 1-degree rotation and a 2-degree rotation), allowing for smooth effect behaviour and interactivity.
 			</p>
 		</figure>
 	</section>
 
 	<section id="steps">
-		<h2>Step by step guide</h2>
+		<h2>Step-by-step guide</h2>
 		<hr>
 		<div class="row">
 			<div></div>
@@ -261,21 +264,26 @@ ol {
 	</section>
 
 	<section id="abstract"/>
-		<h2>Just a bit more backround</h2>
+		<h2>Just a bit more background</h2>
 		<hr>
 		<p>
-			Each surface in a scene becomes a trained neural network contained within a shader. Here's an example of the coffee cup's surface, unwrapped according to its UV map (you can click and drag on it with your mouse and explore its two interactive axes):
+			Each surface in a scene becomes a trained neural network contained within a shader. Here's an example of the coffee cup's surface, unwrapped according to its UV map (you can hover over it with your mouse and explore its two interactive axes):
 		</p>
-		<iframe id="shader" width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fl3BWB?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
+		<iframe id="shader" src="https://codesandbox.io/embed/coffee-cup-surface-zeb2gq?fontsize=14&hidenavigation=1&theme=dark&view=preview"
+		style="width:700px; height:400px; border:0; border-radius: 4px; overflow:hidden;"
+		title="coffee cup surface"
+		allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+		sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+	></iframe>
 		<p>
-			That means that each pixel, say roughly a million of them on an average screen, is doing inference on a multi-thousand parameter network, ideally 60 times per second. That's just a lot of compute and something to keep in mind for older devices (though all of the demos do work fluidly on many devices).
+			That means that each pixel, say roughly a million of them on an average screen, is doing inference on a multi-thousand parameter network, ideally 60 times per second. That's just a lot of compute and something to keep in mind for older devices (though for example the <a href="https://codesandbox.io/s/nobigi-coffee-cup-example-xtj3tk">Coffee Cup demo</a> does work fluidly on many devices).
 		</p>
 	</section>
 
 	<section id="results">
 		<h2>Future</h2>
 		<p>
-			Although you need to be attentive when using this approach, to keep performance consistently within a good range, you can also look forward a bit and imagine, given the expected (and current) improvements in GPU capabilities, what else is possible when pixels are "smart" and their networks deeper and deeper. If you're in a position to fund research in neural graphics, do <a href="mailto:me@juretriglav.si">say hello</a>.
+			Although you need to be attentive when using this approach, in order to keep performance consistently within a good range, you can also look forward a bit and imagine, given the expected (and current) improvements in GPU capabilities, what else is possible when pixels are "smart" and their networks deeper and deeper. If you're in a position to fund research in neural graphics, do <a href="mailto:me@juretriglav.si">say hello</a>.
 		</p>
 	</section>
 
