@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<html>
+
+<style type="text/css">
+body {
+	font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";;
+	font-weight: 300;
+	font-size: 17px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 980px;
+}
+h1 {
+	font-weight:300;
+	line-height: 1.15em;
+}
+
+h2 {
+	font-size: 1.75em;
+}
+a:link,a:visited {
+	color: var(--accent-color);
+	text-decoration: none;
+}
+a:hover {
+	filter: brightness(0.9);
+}
+a:hover.paper-btn {
+	filter: brightness(1.1);
+}
+h1, h2, h3 {
+	text-align: center;
+}
+h1 {
+	font-size: 40px;
+	font-weight: 500;
+}
+h2, h3 {
+	font-weight: 400;
+	margin: 16px 0px 4px 0px;
+}
+
+section {
+	margin: 32px 0px 32px 0px;
+	text-align: justify;
+	clear: both;
+}
+
+#authors {
+	font-size: 18px;
+}
+
+.teaser {
+	max-width: 100%;
+}
+.text-center {
+	text-align: center;
+}
+
+hr {
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #ddd;
+	margin: 0;
+}
+
+.material-icons {
+	max-width: 24px;
+	max-height: 18px;
+	vertical-align: -6px;
+}
+
+p {
+	line-height: 1.25em;
+}
+.caption_justify {
+	font-size: 16px;
+	/*font-style: italic;*/
+	color: #666;
+	text-align: justify;
+	margin-top: 0px;
+	margin-bottom: 64px;
+}
+.caption_bold {
+	font-size: 16px;
+	/*font-style: italic;*/
+	color: #666;
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-weight: bold;
+}
+video {
+	display: block;
+	margin: auto;
+}
+figure {
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+figure {
+	display: block;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.paper-btn {
+  position: relative;
+  text-align: center;
+
+  display: inline-block;
+  margin: 8px;
+  padding: 8px 8px;
+
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+
+  background-color: var(--accent-color);
+  color: #f1f3f4 !important;
+  font-size: 20px;
+  width: 190px;
+  font-weight: 600;
+}
+.paper-btn-parent {
+	display: flex;
+	justify-content: center;
+	margin: 16px 0px;
+}
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 16px;
+	padding-right: 16px;
+}
+.venue {
+	color: #1367a7;
+}
+
+ol {
+  list-style-position: inside;
+  padding-left: 0;
+}
+
+#shader {
+	display: block;
+	margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  body {
+    width: 100%;
+  }
+}
+
+</style>
+
+<head>
+	<title>Nobigi - Neural optimized baked interactive global illumination</title>
+	<meta property="og:description" content="Nobigi - Neural optimized baked interactive global illumination"/>
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=block" rel="stylesheet">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:creator" content="@juretriglav">
+	<meta name="twitter:title" content="Nobigi - Neural optimized baked interactive global illumination">
+	<meta name="twitter:description" content="Performant and interactive approximation of global illumination using small neural networks on the web.">
+	<meta name="twitter:image" content="https://nvlabs.github.io/instant-ngp/assets/twitter.jpg">
+</head>
+
+<body>
+<div class="container">
+	<div class="paper-title">
+		<h1>Nobigi - Neural optimized baked interactive global illumination</h1>
+	</div>
+
+	<div id="authors">
+		<div class="author-row">
+			<div class="text-center"><a href="https://juretriglav.si">Jure Triglav</a></div>
+		</div>
+
+		<!-- <div class="affil-row">
+			<div class="venue text-center"><b><a href="https://s2022.siggraph.org">Inspired by SIGGRAPH 2022</a></b></div>
+		</div> It's true... -->
+
+		<div style="clear: both">
+			<div class="paper-btn-parent">
+				<a class="paper-btn" href="https://github.com/jure/nobigi">
+					<span class="material-icons"> code </span>
+					Code
+				</a>
+				<a class="paper-btn" href="https://juretriglav.si/compressing-global-illumination-with-neural-networks/">
+					<span class="material-icons"> newspaper </span>
+					Story
+				</a>
+				<a class="paper-btn" href="https://codesandbox.io/s/nobigi-coffee-cup-example-xtj3tk">
+					<span class="material-icons"> lightbulb </span>
+					Example
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<section id="teaser-videos">
+		<figure style="width: 50%; float: left">
+			<p class="caption_bold">
+				Single interactive component
+			</p>
+		</figure>
+
+		<figure style="width: 50%; float: left">
+			<p class="caption_bold">
+				Two interactive components
+			</p>
+		</figure>
+		<figure style="width: 49.5%; float: left">
+			<video class="centered" width="100%" autoplay muted loop playsinline>
+				<source src="assets/pillar.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		</figure>
+
+		<figure style="width: 49.5%; float: right">
+			<video class="centered" width="100%" autoplay muted loop playsinline>
+				<source src="assets/coffeecup.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>
+		</figure>
+
+		<figure style="width: 100%; float: left">
+			<p class="caption_justify">
+				Described here is a performant (even on mobile devices that are a few years old) and <b>interactive global illumination using small neural networks</b> (4-7 layers deep). Baked lightmaps are the method of choice for pleasantly and accurately lit 3D scenes on the web, but their main drawback is that they are static. A rarely used alternative are video lightmaps, which essentially allow for 1 axis of interactivity (time can be used to represent a dynamic component) - but they are rarely used for a reason, as they can be extremely heavy assets.
+				Demonstrated here is an approach where the global illumination effect of 2 dynamic components (the example uses the rotation of a light on two axes) can be compressed into neural networks with a couple of thousand parameters, and further represented in optimized GLSL (shader) code that is a few 10 kB in size.
+			</p>
+		</figure>
+	</section>
+
+	<section id="steps">
+		<h2>Step by step guide</h2>
+		<hr>
+		<div class="row">
+			<div></div>
+			<ol>
+			<li>Prepare a scene in Blender (see the <a href="https://github.com/jure/nobigi/tree/main/coffee-cup-scene.blend">Coffee Cup scene</a> for an example)
+			</li>
+			<li>
+				Bake all the surfaces in the scene for all the variable conditions in your scene (such as light rotation, or object movement). See <a href="https://github.com/jure/nobigi/tree/main/rotate_light_and_bake.py">this Blender script</a> for an example - this is also included in the example Blender scene linked above.
+			</li>
+			<li>
+				Prepare and train your neural network. See this annotated Colab notebook: <a href="https://colab.research.google.com/github/jure/nobigi/blob/main/notebooks/nobigi_two_axis_example.ipynb">Nobigi colab notebook</a>.
+			</li>
+			<li>
+				Carry the generated GLSL code into your web 3D application, an example of which can be seen here: <a href="https://codesandbox.io/s/nobigi-coffee-cup-example-xtj3tk">Coffee cup example sandbox</a>.
+			</li>
+			</ol>
+		</div>
+	</section>
+
+	<section id="abstract"/>
+		<h2>Just a bit more backround</h2>
+		<hr>
+		<p>
+			Each surface in a scene becomes a trained neural network contained within a shader. Here's an example of the coffee cup's surface, unwrapped according to its UV map (you can click and drag on it with your mouse and explore its two interactive axes):
+		</p>
+		<iframe id="shader" width="640" height="360" frameborder="0" src="https://www.shadertoy.com/embed/fl3BWB?gui=true&t=10&paused=true&muted=false" allowfullscreen></iframe>
+		<p>
+			That means that each pixel, say roughly a million of them on an average screen, is doing inference on a multi-thousand parameter network, ideally 60 times per second. That's just a lot of compute and something to keep in mind for older devices (though all of the demos do work fluidly on many devices).
+		</p>
+	</section>
+
+	<section id="results">
+		<h2>Future</h2>
+		<p>
+			Although you need to be attentive when using this approach, to keep performance consistently within a good range, you can also look forward a bit and imagine, given the expected (and current) improvements in GPU capabilities, what else is possible when pixels are "smart" and their networks deeper and deeper. If you're in a position to fund research in neural graphics, do <a href="mailto:me@juretriglav.si">say hello</a>.
+		</p>
+	</section>
+
+	<section id="acknowledgements">
+		<h2>Acknowledgements</h2>
+		<hr>
+		<div class="row">
+			<p>
+			I would like to thank
+			<a href="https://twitter.com/mahalis">Noah Witherspoon</a>,
+			<a href="https://twitter.com/0xca0a">Paul Henschel</a>,
+			<a href="https://twitter.com/0beqz">0beqz</a>
+			for feedback, discussions, and encouragement.
+			This website is based on <a href="https://nvlabs.github.io/instant-ngp">Instant-NGP's website</a>.
+			<br/>
+			<br/>
+			<em>Coffee Cup model </em> by Andrey Kananav (<a href="https://kananav.com/simple-coffee-cup-free-3d-model-for-blender">model</a>, <a href="https://creativecommons.org/share-your-work/public-domain/cc0/">CC0</a>)
+			<br/>
+			</p>
+		</div>
+	</section>
+</div>
+<script>
+var colors = ['tomato', 'indigo', 'deeppink', 'darkseagreen', 'darkorchid', 'darkcyan', 'darkorange', 'cornflowerblue'];
+        var random_color = colors[Math.floor(Math.random() * colors.length)];
+        let root = document.documentElement;
+        root.style.setProperty('--accent-color', random_color);
+</script>
+</body>
+
+</html>
